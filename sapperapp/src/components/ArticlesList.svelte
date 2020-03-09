@@ -1,25 +1,11 @@
 <script>
   import Article from "../components/Article.svelte";
-  // TODO do I need this here?
-  //export let segment;
+
   export let articles;
 </script>
 
-<style>
-  /* .radiogroup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  } */
-</style>
-
-<!-- We have article.title and article .image -->
-
-<!-- <div class="radiogroup">
-	<slot></slot>
-</div> -->
-
+<!-- This is a list of articles. It takes the prop articles containing the list.
+It uses the component Article. -->
 {#each articles as article}
   <!-- Displaying only articles that have an image -->
   {#if article.image !== 'undefined'}

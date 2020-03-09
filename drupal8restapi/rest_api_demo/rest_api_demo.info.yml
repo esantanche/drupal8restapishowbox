@@ -1,0 +1,6 @@
+name: Rest Api Demo Module
+description: Demonstrating Drupal 8 custom REST APIs.
+package: Custom
+type: module
+version: 1.0
+core: 8.x

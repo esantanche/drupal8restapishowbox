@@ -1,13 +1,16 @@
 <script>
   import Radiogroup from "../components/Radiogroup.svelte";
   import ArticlesList from "../components/ArticlesList.svelte";
+  import Separator from "../components/Separator.svelte";
 
   let type_of_articles;
 
   // the `$:` means 're-run whenever type_of_articles changes'
   $: articles = getArticles(type_of_articles);
 
+  // Calling the Drupal REST API
   async function getArticles(type_of_articles) {
+
     if (type_of_articles) {
       const response = await fetch(
         `https://backend.emanuelesantanche.com/rest_api_demo/demo_resource/${type_of_articles}?_format=json`
@@ -16,14 +19,17 @@
       const articles = await response.json();
 
       if (response.ok) {
-        console.log(articles);
-        return articles;
+
+		// Returning first 20 articles only
+        return articles.slice(0, 20);
       } else {
-        throw new Error(todo);
+
+        throw new Error(response);
       }
     } else {
       return [];
-    }
+	}
+	
   }
 </script>
 
@@ -36,20 +42,9 @@
 
   h1 {
     font-size: 2em;
-    text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
     margin: 0 0 0.5em 0;
   }
-
-  /* figure {
-    margin: 0 0 1em 0;
-  } */
-
-  /* img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
-  } */
 
   p {
     margin: 1em auto;
@@ -62,6 +57,7 @@
   }
 </style>
 
+<!-- The <svelte:head> element allows you to insert elements inside the <head> of your document -->
 <svelte:head>
   <title>Drupal 8 Rest Api Showbox</title>
 </svelte:head>
@@ -73,12 +69,14 @@
     <input type="radio" bind:group={type_of_articles} value="ems_article" />
     Tech only
   </label>
-
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <label>
     <input type="radio" bind:group={type_of_articles} value="wrt_item" />
     Humanity and tech
   </label>
 </Radiogroup>
+
+<Separator />
 
 {#await articles}
   <p>...just a moment</p>

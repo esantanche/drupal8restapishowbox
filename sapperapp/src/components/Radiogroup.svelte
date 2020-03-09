@@ -1,8 +1,3 @@
-<script>
-  // TODO do I need this here?
-  //export let segment;
-</script>
-
 <style>
   .radiogroup {
     display: flex;
@@ -12,9 +7,7 @@
   }
 </style>
 
+<!-- Group of radio buttons -->
 <div class="radiogroup">
-	<slot></slot>
+  <slot />
 </div>
-
-
-	

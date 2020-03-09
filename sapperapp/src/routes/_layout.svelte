@@ -1,22 +1,23 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+  import Nav from "../components/Nav.svelte";
 
-	export let segment;
+  export let segment;
 </script>
 
 <style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+  main {
+    position: relative;
+    max-width: 56em;
+    background-color: white;
+    padding: 2em;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 </style>
 
-<Nav {segment}/>
+<!-- To create a layout component that applies to every page, make a file called src/routes/_layout.svelte -->
+<Nav {segment} />
 
 <main>
-	<slot></slot>
+  <slot />
 </main>

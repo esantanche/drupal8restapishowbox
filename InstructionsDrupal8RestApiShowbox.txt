@@ -1,0 +1,27 @@
+Making link from /home/esantanche/SwProjects/Drupal8RestApiShowbox/ to /vol/WORKnARCH/SwProjects/Drupal8RestApiShowbox/
+[esantanche@luna ~]$ sudo ln -s /vol/WORKnARCH/SwProjects/ /home/esantanche/SwProjects
+
+# Running the image (creating the container, run from any folder)
+(FIXME to be tested again, but it creates a new container)
+[esantanche@lily Drupal8RestApiShowbox]$ sudo docker run -v /home/esantanche/SwProjects/Drupal8RestApiShowbox/:/app -w /app -d -p 3002:3000 nodejsgitbashnpm
+
+If you already have a container, don't use the command above! Just start the container.
+
+# Exec a bash
+sudo docker exec -i -t Drupal8RestApiShowbox bash
+
+# Start the dev server
+in a bash in the container:
+[root@2b7a67476c15 sapperapp]# npm run dev
+Open http://localhost:3000/
+
+Installing Sapper in the container (only once per container!)
+bash-5.0# npx degit "sveltejs/sapper-template#rollup" sapperapp
+bash-5.0# cd sapperapp/
+bash-5.0# npm install
+bash-5.0# npm run dev
+
+# Build, or better, export
+[root@2b7a67476c15 sapperapp]# npx sapper export
+
+

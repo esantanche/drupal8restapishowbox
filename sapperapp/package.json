@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "Drupal8RestApiShowbox",
+  "description": "Drupal 8 Rest Api Showbox with Sapper/Svelte frontend",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",

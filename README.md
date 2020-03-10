@@ -9,4 +9,3 @@ You find it running here: http://drupal8restapishowbox.emanuelesantanche.com/
 * Drupal 8
 * Svelte
 * Sapper
-

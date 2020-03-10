@@ -1,27 +1,34 @@
 Making link from /home/esantanche/SwProjects/Drupal8RestApiShowbox/ to /vol/WORKnARCH/SwProjects/Drupal8RestApiShowbox/
 [esantanche@luna ~]$ sudo ln -s /vol/WORKnARCH/SwProjects/ /home/esantanche/SwProjects
 
-# Running the image (creating the container, run from any folder)
-(FIXME to be tested again, but it creates a new container)
-[esantanche@lily Drupal8RestApiShowbox]$ sudo docker run -v /home/esantanche/SwProjects/Drupal8RestApiShowbox/:/app -w /app -d -p 3002:3000 nodejsgitbashnpm
+# Running the image, I create a container
+[esantanche@luna ~]$ sudo docker run -v /home/esantanche/SwProjects/Drupal8RestApiShowbox/:/app -w /app -t -d -p 3000:3000 --name=Drupal8RestApiShowbox nodejsgitbashnpm
+The option -t allocates a terminal to the container so that it can run a shell. Without this option the container tries to start but fails because the shell needs a terminal.
+The option -d means that the container starts detached. I will have to open a shell on it later.
+The internal port 3000 will be mapped to the host machine's one of the same number. I will be able to see the app working on http://localhost:3000/
+The container will be named Drupal8RestApiShowbox.
 
-If you already have a container, don't use the command above! Just start the container.
+If you already have a container, don't use the command above, just start it.
 
-# Exec a bash
+# Exec a bash on the container
 sudo docker exec -i -t Drupal8RestApiShowbox bash
 
 # Start the dev server
-in a bash in the container:
+Open a console on the container.
+
+Run these commands: 
+[root@2b7a67476c15 app]# cd sapperapp/
 [root@2b7a67476c15 sapperapp]# npm run dev
+
 Open http://localhost:3000/
 
-Installing Sapper in the container (only once per container!)
+# Installing Sapper in the container (only once per container!)
 bash-5.0# npx degit "sveltejs/sapper-template#rollup" sapperapp
 bash-5.0# cd sapperapp/
 bash-5.0# npm install
 bash-5.0# npm run dev
 
-# Build, or better, export
+# Build, or better, export the application
 [root@2b7a67476c15 sapperapp]# npx sapper export
 
 

@@ -61,5 +61,10 @@
         About
       </a>
     </li>
+    <li>
+      <a aria-current={segment === 'singlearticle' ? 'page' : undefined} href="singlearticle">
+        Single article
+      </a>
+    </li>
   </ul>
 </nav>

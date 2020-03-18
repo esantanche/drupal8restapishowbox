@@ -6,6 +6,7 @@
   let type_of_articles;
 
   // the `$:` means 're-run whenever type_of_articles changes'
+  // FIXME
   $: articles = getArticles(type_of_articles);
 
   // Calling the Drupal REST API
@@ -16,20 +17,21 @@
         `https://backend.emanuelesantanche.com/rest_api_demo/demo_resource/${type_of_articles}?_format=json`
       );
 
-      const articles = await response.json();
+      const jsonresponse = await response.json();
 
       if (response.ok) {
 
-		// Returning first 20 articles only
-        return articles.slice(0, 20);
+		    // Returning first 20 articles only
+        return jsonresponse.slice(0, 20);
+
       } else {
 
         throw new Error(response);
       }
     } else {
       return [];
-	}
-	
+    }
+    
   }
 </script>
 
